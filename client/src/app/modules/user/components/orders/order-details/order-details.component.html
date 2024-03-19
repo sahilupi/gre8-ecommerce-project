@@ -1,0 +1,111 @@
+<section class="product__section">
+  <div class="container" *ngIf="!isLoading">
+    <div class="section__heading text-center mb-40">
+      <h2 class="section__heading--maintitle" *ngIf="order">Order Details</h2>
+      <h3>{{ serverErrMsg }}</h3>
+    </div>
+    <app-order-tracking [status]="orderStatus"></app-order-tracking>
+    <div class="product__section--inner" *ngIf="order">
+      <h2 class="light-h">Payment Status: <b>{{ order.paymentStatus }}</b></h2>
+      <div class="row mb--n30">
+        <div class="col-lg-4 col-md-4 col-sm-6 col-6 custom-col mb-30">
+          <h3>Order Id</h3>
+          <p>{{ order._id }}</p>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-6 col-6 custom-col mb-30">
+          <h3>Order Date</h3>
+          <p>{{ order.dateOrdered | date }}</p>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-6 col-6 custom-col mb-30">
+          <h3>Order Status</h3>
+          <p>{{ order.status }}</p>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-6 col-6 custom-col mb-30">
+          <h3>Order Total Price</h3>
+          <p>{{ order.totalPrice | currency: order.currency }}</p>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-6 col-6 custom-col mb-30" *ngIf="order.address.orderNotes">
+          <h3>Order Notes</h3>
+          <p>{{ order.address.orderNotes }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="product__section--inner section--padding" *ngIf="order">
+      <h2 class="light-h">Order Items</h2>
+      <table class="account__table">
+        <thead class="account__table--header">
+          <tr class="account__table--header__child">
+            <th class="account__table--header__child--items">Name</th>
+            <th class="account__table--header__child--items">Price</th>
+            <th class="account__table--header__child--items">Quantity</th>
+            <th class="account__table--header__child--items">Size</th>
+            <th class="account__table--header__child--items">Subtotal</th>
+          </tr>
+        </thead>
+        <tbody class="account__table--body mobile__none">
+          <tr class="account__table--body__child" *ngFor="let item of order.orderItems">
+              <td class="account__table--body__child--items">{{ item.product.name }}</td>
+              <td class="account__table--body__child--items">{{ item.product.currentPrice | currency: order.currency }}</td>
+              <td class="account__table--body__child--items">{{ item.quantity }}</td>
+              <td class="account__table--body__child--items">{{ item.size ? item.size : '-' }}</td>
+              <td class="account__table--body__child--items">{{ +item.quantity * +item.product.currentPrice | currency: order.currency }}</td>
+          </tr>
+          <tr class="account__table--body__child total-price">
+              <td class="account__table--body__child--items">Total Price: <b>{{ order.totalPrice | currency: order.currency }}</b></td>
+          </tr>
+        </tbody>
+
+        <tbody class="account__table--body mobile__block" *ngIf="order">
+          <tr class="account__table--body__child" *ngFor="let item of order.orderItems">
+            <td class="account__table--body__child--items">
+              <strong>Name</strong>
+              <span>{{ item.product.name }}</span>
+            </td>
+            <td class="account__table--body__child--items">
+              <strong>Price</strong>
+              <span>{{ item.product.currentPrice | currency: order.currency }}</span>
+            </td>
+            <td class="account__table--body__child--items">
+              <strong>Quantity</strong>
+              <span>{{ item.quantity }}</span>
+            </td>
+            <td class="account__table--body__child--items">
+              <strong>Subtotal</strong>
+              <span>{{ +item.quantity * +item.product.currentPrice | currency: order.currency }}</span>
+            </td>
+          </tr>
+          <tr class="account__table--body__child">
+            <td class="account__table--body__child--items">
+              <strong>Total Price</strong> <span> <b>{{ order.totalPrice | currency: order.currency }}</b></span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="product__section--inner section--padding" *ngIf="order">
+      <h2 class="light-h">Order Address</h2>
+      <div class="row mb--n30">
+        <div class="col-lg-4 col-md-4 col-sm-6 col-6 custom-col mb-30">
+          <h3>Order Address</h3>
+          <p> {{ order.address.shippingAddress1 }},
+            {{ order.address.shippingAddress2 }}, <br>
+            {{ order.address.zip }},
+            {{ order.address.city }}, <br>
+            {{ order.address.country }}</p>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-6 col-6 custom-col mb-30">
+          <h3>Customer Name</h3>
+          <p>{{ order.address.name }}</p>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-6 col-6 custom-col mb-30">
+          <h3>Contact Details</h3>
+          <p>{{ order.address.phone }}</p>
+        </div>
+      </div>
+    </div>
+    <a routerLink="/user/orders" class="banner__box--content__btn primary__btn">Go Back</a>
+  </div>
+</section>
+
+<app-loading-spinner *ngIf="isLoading"></app-loading-spinner>

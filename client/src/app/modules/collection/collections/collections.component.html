@@ -1,0 +1,65 @@
+<!-- Start breadcrumb section -->
+<div class="breadcrumb__section breadcrumb__bg">
+  <div class="container">
+    <div class="row row-cols-1">
+      <div class="col">
+        <div class="breadcrumb__content text-center">
+          <h1 class="breadcrumb__content--title">Collections</h1>
+          <ul class="breadcrumb__content--menu d-flex justify-content-center">
+            <li class="breadcrumb__content--menu__items"><a routerLink="/">Home</a></li>
+            <li class="breadcrumb__content--menu__items"><span style="text-transform: capitalize;">{{collectionName}}</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End breadcrumb section -->
+
+<!-- Start shop section -->
+<div class="shop__section section--padding pt-0">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-12 col-lg-12 shop-col-width-lg-12">
+        <div class="shop__product--wrapper position__sticky">
+          <div class="shop__header d-flex align-items-center justify-content-between mb-30">
+
+          </div>
+          <h3 *ngIf="products.length <= 0 && !isLoadingProducts && !serverErrMsg">No Products found in this category
+          </h3>
+          <h3 *ngIf="serverErrMsg">{{serverErrMsg}}</h3>
+          <div class="tab_content" *ngIf="products.length <= 0 && isLoadingProducts">
+            <div id="product_grid" class="tab_pane active show">
+              <div class="product__section--inner">
+                <div class="row mb--n30">
+                  <div class="col-lg-3 col-md-3 col-sm-6 col-6 custom-col mb-30"
+                    *ngFor="let skeloton of ['', '', '', '', '', '']">
+                    <ngx-skeleton-loader count="1" appearance="circle" [theme]="{
+                                        width: '100%',
+                                        height: '320px',
+                                        'border-radius': 0
+                                      }">
+                    </ngx-skeleton-loader>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab_content" *ngIf="products.length > 0">
+            <div id="product_grid" class="tab_pane active show animate__animated  animate__fadeIn">
+              <div class="product__section--inner">
+                <div class="row mb--n30">
+                  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 mb-30 product-collection" *ngFor="let product of products">
+                    <app-product [product]="product"></app-product>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End shop section -->

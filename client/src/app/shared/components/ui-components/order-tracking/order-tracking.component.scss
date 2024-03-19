@@ -1,0 +1,87 @@
+
+
+.row {
+  margin-bottom: 20px;
+}
+.multi-steps-wrap .multi-steps {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+}
+.multi-steps-wrap .multi-steps > li {
+  counter-increment: stepNum;
+  text-align: center;
+  display: table-cell;
+  position: relative;
+  color: #3cba9f;
+  font-size: 12px;
+  z-index: 1;
+}
+.negative {
+  border-color: red;
+}
+.multi-steps-wrap .multi-steps > li:before {
+  content: "X";
+  display: block;
+  margin: 0 auto 4px;
+  background-color: #fff;
+  width: 46px;
+  height: 46px;
+  line-height: 40px;
+  text-align: center;
+  font-size: 18px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: #3cba9f;
+  border-radius: 50%;
+}
+.multi-steps-wrap .multi-steps > li:after {
+  content: "";
+  height: 2px;
+  width: 100%;
+  background-color: #808080;
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  z-index: -1;
+}
+.multi-steps-wrap .multi-steps > li.is-active:after {
+  background-color: #3cba9f;
+}
+.multi-steps-wrap .multi-steps > li:last-child:after {
+  display: none;
+}
+.multi-steps-wrap .multi-steps > li.is-active:before {
+  content: "✓";
+}
+.multi-steps-wrap .multi-steps > li:last-child.is-active:before {
+  content: "✓";
+}
+.multi-steps-wrap .multi-steps > li:first-child.is-active:before {
+  content: "✓";
+}
+.multi-steps-wrap .multi-steps > li.is-active:before {
+  background-color: #fff;
+  border-color: #3cba9f;
+}
+.multi-steps-wrap .multi-steps > li.negative:before {
+  background-color: #3cba9f;
+  border-color: #3cba9f;
+
+  color: white;
+}
+.multi-steps-wrap .multi-steps > li.is-active ~ li {
+  color: #808080;
+}
+// .multi-steps-wrap .multi-steps > li.is-active ~ li:before {
+//   // background-color: #eee;
+//   border-color: #fff;
+// }
+
+@media (max-width: 576px) {
+  .multi-steps-wrap .multi-steps > li:before {
+    width: 35px;
+    height: 35px;
+    line-height: 31px;
+  }
+}

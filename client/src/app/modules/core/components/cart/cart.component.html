@@ -1,0 +1,191 @@
+<!-- Start breadcrumb section -->
+<div class="breadcrumb__section breadcrumb__bg">
+  <div class="container">
+    <div class="row row-cols-1">
+      <div class="col">
+        <div class="breadcrumb__content text-center">
+          <ul class="breadcrumb__content--menu d-flex justify-content-center">
+            <li class="breadcrumb__content--menu__items"><a routerLink="/">Home</a></li>
+            <li class="breadcrumb__content--menu__items"><span>Shopping Cart</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End breadcrumb section -->
+
+<!-- cart section start -->
+<section class="cart__section section--padding">
+  <div class="container-fluid">
+    <div class="cart__section--inner">
+      <form>
+        <h2 class="cart__title mb-35">Shopping Cart</h2>
+        <div class="row">
+          <div class="col-lg-8">
+            <div class="cart__table">
+              <table class="cart__table--inner">
+                <thead class="cart__table--header" *ngIf="cartItems && cartItems.length > 0">
+                  <tr class="cart__table--header__items">
+                    <th class="cart__table--header__list">Product</th>
+                    <th class="cart__table--header__list">Price</th>
+                    <th class="cart__table--header__list">Quantity</th>
+                    <th class="cart__table--header__list">Total</th>
+                  </tr>
+                </thead>
+                <thead class="cart__table--header" *ngIf="isLoadingCart && cartItems.length < 1">
+                  <tr class="cart__table--header__items">
+                    <th class="cart__table--header__list">Product</th>
+                    <th class="cart__table--header__list">Price</th>
+                    <th class="cart__table--header__list">Quantity</th>
+                    <th class="cart__table--header__list">Total</th>
+                  </tr>
+                </thead>
+                <tbody class="cart__table--body" *ngIf="isLoadingCart && cartItems.length < 1">
+                  <tr class="cart__table--body__items" *ngFor="let skeleton of ['', '']">
+                    <td class="cart__table--body__list">
+                      <ngx-skeleton-loader count="1" appearance="circle" [theme]="{
+                                      width: '100%',
+
+                                      'border-radius': 0
+                                    }">
+                      </ngx-skeleton-loader>
+                    </td>
+                    <td class="cart__table--body__list">
+                      <ngx-skeleton-loader count="1" appearance="circle" [theme]="{
+                                      width: '100%',
+
+                                      'border-radius': 0
+                                    }">
+                      </ngx-skeleton-loader>
+                    </td>
+                    <td class="cart__table--body__list">
+                      <ngx-skeleton-loader count="1" appearance="circle" [theme]="{
+                                      width: '100%',
+
+                                      'border-radius': 0
+                                    }">
+                      </ngx-skeleton-loader>
+                    </td>
+
+                    <td class="product-subtotal">
+                      <span class="amount"><ngx-skeleton-loader count="1" appearance="circle" [theme]="{
+                                      width: '100%',
+
+                                      'border-radius': 0
+                                    }">
+                        </ngx-skeleton-loader></span>
+                    </td>
+                    <td class="product-quantity">
+                      <ngx-skeleton-loader count="1" appearance="circle" [theme]="{
+                                      width: '100%',
+
+                                      'border-radius': 0
+                                    }">
+                      </ngx-skeleton-loader>
+                    </td>
+                    <td class="product-price">
+                      <span class="amount"><ngx-skeleton-loader count="1" appearance="circle" [theme]="{
+                                      width: '100%',
+                                      'border-radius': 0
+                                    }">
+                        </ngx-skeleton-loader></span>
+                    </td>
+                    <td class="product-close">
+                      <ngx-skeleton-loader count="1" appearance="circle" [theme]="{
+                                      width: '100%',
+
+                                      'border-radius': 0
+                                    }">
+                      </ngx-skeleton-loader>
+                    </td>
+                  </tr>
+                </tbody>
+                <tbody class="cart__table--body">
+                  <tr class="cart__table--body__items" *ngFor="let cartItem of cartItems; let i = index">
+                    <td class="cart__table--body__list">
+                      <div class="cart__product d-flex align-items-center">
+                        <button [title]="'Delete '+ cartItem.product.name"
+                          (click)="onDeleteItemFromCart(cartItem.product._id, i, +cartItem.product.currentPrice, +cartItem.quantity)" class="cart__remove--btn"
+                          aria-label="search button" type="button">
+                          <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16px"
+                            height="16px">
+                            <path
+                              d="M 4.7070312 3.2929688 L 3.2929688 4.7070312 L 10.585938 12 L 3.2929688 19.292969 L 4.7070312 20.707031 L 12 13.414062 L 19.292969 20.707031 L 20.707031 19.292969 L 13.414062 12 L 20.707031 4.7070312 L 19.292969 3.2929688 L 12 10.585938 L 4.7070312 3.2929688 z" />
+                          </svg>
+                        </button>
+                        <div class="cart__thumbnail">
+                          <a [routerLink]="'/products/'+cartItem.product._id"><img class="border-radius-5"
+                              [src]="cartItem.product.image" alt="cart-product"></a>
+                        </div>
+                        <div class="cart__content">
+                          <h3 class="cart__content--title h4"><a [routerLink]="'/products/'+cartItem.product._id">{{
+                              cartItem.product.name }}</a></h3>
+                          <!-- <span class="cart__content--variant">COLOR: Blue</span> -->
+                          <span class="cart__content--variant" *ngIf="cartItem.size">Size: {{ cartItem.size }}</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="cart__table--body__list">
+                      <span class="cart__price">{{ cartItem.product.currentPrice | currency: cartItem.product.currency
+                        }}</span>
+                    </td>
+                    <td class="cart__table--body__list">
+                      <app-input-spinner [value]="cartItem.quantity"
+                        (change)="onUpdateQuantity($event, cartItem.product)"></app-input-spinner>
+                    </td>
+                    <td class="cart__table--body__list" *ngIf="!isLoadingUpdateQuantity">
+                      <span class="cart__price end">{{ +cartItem.product.currentPrice * (cartItem.product.quantity ?
+                        +cartItem.product.quantity : +cartItem.quantity)| currency: cartItem.product.currency }}</span>
+                      </td>
+                    <td class="cart__table--body__list" *ngIf="isLoadingUpdateQuantity">
+                        <span class="cart__price end" id="loading"></span>
+                      </td>
+                  </tr>
+                </tbody>
+              </table>
+              <h1 *ngIf="!cartItems || cartItems.length <= 0 && !isLoadingCart"
+                class="title title-simple title-step active"><a routerLink="/cart">No Items in cart</a></h1>
+              <div class="continue__shopping d-flex justify-content-between">
+                <a class="continue__shopping--link" routerLink="/products/collections/all">Continue shopping</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4" *ngIf="cartItems && cartItems.length > 0 && !isLoadingCart">
+            <div class="cart__summary border-radius-10">
+
+              <div class="cart__summary--total mb-20">
+                <table class="cart__summary--total__table">
+                  <tbody>
+                    <tr class="cart__summary--total__list">
+                      <td class="cart__summary--total__title text-left">SUBTOTAL</td>
+                      <td class="cart__summary--amount text-right">{{ subTotal() | currency: 'INR' }}</td>
+                    </tr>
+                    <tr class="cart__summary--total__list">
+                      <td class="cart__summary--total__title text-left">SHIPPING CHARGES</td>
+                      <td class="cart__summary--amount text-right">{{ subTotal() > 600 ? 0 : 120 | currency: 'INR' }}</td>
+                    </tr>
+                    <tr class="cart__summary--total__list">
+                      <td class="cart__summary--total__title text-left">GRAND TOTAL</td>
+                      <td class="cart__summary--amount text-right">{{ grandTotal() | currency: 'INR' }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="cart__summary--footer">
+                <p class="cart__summary--footer__desc">Shipping charges are INR 120 extra if you order under INR 600</p>
+                <ul class="d-flex justify-content-between">
+                  <li style="width: 100%;">
+                    <button style="width: 100%;" class="cart__summary--footer__btn primary__btn checkout"
+                      (click)="onCheckOut()" type="button">Check Out</button>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+<!-- cart section end -->

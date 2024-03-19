@@ -1,0 +1,49 @@
+<h2 class="account__content--title h3 mb-20">Orders History</h2>
+<div class="account__table--area">
+  <h3>{{ serverErrMsg }}</h3>
+  <p class="error__content--desc success" *ngIf="isOrderPlaced">Your Order is Placed Successfully</p>
+  <table class="account__table" *ngIf="!isLoading && orders && orders.length > 0">
+    <thead class="account__table--header">
+      <tr class="account__table--header__child">
+        <th class="account__table--header__child--items">Order Id</th>
+        <th class="account__table--header__child--items">Date</th>
+        <th class="account__table--header__child--items">Order Status</th>
+        <th class="account__table--header__child--items">Total</th>
+      </tr>
+    </thead>
+    <tbody class="account__table--body mobile__none" *ngIf="orders && orders.length > 0">
+      <tr class="account__table--body__child" *ngFor="let order of orders" [routerLink]="'/user/orders/order/' + order._id">
+          <td class="account__table--body__child--items">{{ order._id }}</td>
+          <td class="account__table--body__child--items">{{ order.dateOrdered | date }}</td>
+          <td class="account__table--body__child--items">{{ order.status }}</td>
+          <td class="account__table--body__child--items">{{ order.totalPrice | currency: order.currency }}</td>
+      </tr>
+    </tbody>
+
+    <tbody class="account__table--body mobile__block" *ngIf="orders && orders.length > 0">
+      <tr class="account__table--body__child" *ngFor="let order of orders">
+        <td class="account__table--body__child--items">
+          <strong>Order Id</strong>
+          <span>{{ order._id }}</span>
+        </td>
+        <td class="account__table--body__child--items">
+          <strong>Date</strong>
+          <span>{{ order.dateOrdered | date }}</span>
+        </td>
+        <td class="account__table--body__child--items">
+          <strong>Order Status</strong>
+          <span>{{ order.status }}</span>
+        </td>
+        <td class="account__table--body__child--items">
+          <strong>Total</strong>
+          <span>{{ order.totalPrice | currency: order.currency }}</span>
+        </td>
+        <td class="account__table--body__child--items">
+          <a [routerLink]="'/user/orders/order/' + order._id" class="banner__box--content__btn primary__btn">View order details</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<app-loading-spinner *ngIf="isLoading"></app-loading-spinner>

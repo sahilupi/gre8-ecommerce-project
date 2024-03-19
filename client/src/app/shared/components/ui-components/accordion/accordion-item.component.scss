@@ -1,0 +1,29 @@
+@import url("https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css");
+
+.acc-header:hover {
+  color: #c96
+}
+
+.headerTitle {
+  overflow-wrap: break-word;
+  width: 100%;
+}
+
+.headerTitle:hover {
+  color: #c96
+}
+
+.acc-body {
+  min-height: 30px;
+  display: flex;
+  line-height: 1.5rem;
+  align-items: center;
+}
+
+element.style {
+  transform: rotate(0deg);
+}
+
+.mobile-menu-light .mmenu-btn:not(:hover):not(:focus) {
+  color: #666;
+}

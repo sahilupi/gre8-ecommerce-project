@@ -1,0 +1,58 @@
+<div class="login__section section--padding">
+  <div class="container">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmitForm()">
+      <div class="login__section--inner">
+        <div class="row row-cols-md-2 row-cols-1">
+          <div class="col" style="margin: auto;">
+            <div class="account__login">
+              <div class="account__login--header mb-25">
+                <h2 class="account__login--header__title mb-15">Login</h2>
+                <p class="account__login--header__desc" *ngIf="isUserChecking">Login to continue checkout.</p>
+              </div>
+              <div class="account__login--inner">
+                <label>
+                  <input class="account__login--input" placeholder="Email Address" type="email" formControlName="email">
+                </label>
+
+                <small *ngIf="(f['email'].hasError('required') &&
+                              f['email'].touched) || f['email'].hasError('required') &&
+                              isSubmitted" class="p-error">Email is required</small>
+                <small *ngIf="(f['email'].hasError('email') &&
+                              f['email'].touched) || f['email'].hasError('email') &&
+                              isSubmitted" class="p-error">Email is invalid</small>
+
+                <label>
+                  <input class="account__login--input" placeholder="Password" type="password"
+                    formControlName="password">
+                </label>
+
+                <small *ngIf="(f['password'].hasError('required') &&
+                  f['password'].touched) || f['password'].hasError('required') &&
+                  isSubmitted" class="p-error">Password is required</small>
+                <small *ngIf="(f['password'].hasError('minlength') &&
+                  f['password'].touched) || f['password'].hasError('minlength') &&
+                  isSubmitted" class="p-error">Minimum length of password should 4 characters</small>
+
+                  <small class="p-error m-auto">{{ errMsg }}</small>
+                <div class="account__login--remember__forgot mb-15 d-flex justify-content-between align-items-center">
+                  <div class="account__login--remember position__relative">
+                    <!-- <input class="checkout__checkbox--input" id="check1" type="checkbox">
+                    <span class="checkout__checkbox--checkmark"></span>
+                    <label class="checkout__checkbox--label login__remember--label" for="check1">
+                      Remember me</label> -->
+                  </div>
+                  <button class="account__login--forgot" type="button" routerLink="/auth/reset-password">Forgot Your Password?</button>
+                </div>
+                <button class="account__login--btn primary__btn" type="submit">Login</button>
+                <p class="account__login--signup__text">Don,t Have an Account? <button type="button"
+                    routerLink="/auth/register">Sign up now</button></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<app-loading-spinner *ngIf="isLoading"></app-loading-spinner>

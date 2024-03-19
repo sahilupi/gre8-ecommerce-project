@@ -1,0 +1,17 @@
+<li class="header__account--items header__minicart--items">
+  <a class="header__account--btn minicart__open--btn" routerLink="/cart" data-offcanvas>
+    <span class="header__account--btn__icon">
+      <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12.25 7.66667V4.33333C12.25 3.44928
+                        11.8549 2.60143 11.1517 1.97631C10.4484
+                        1.35119 9.49456 1 8.5 1C7.50544 1 6.55161
+                        1.35119 5.84835 1.97631C5.14509 2.60143 4.75
+                        3.44928 4.75 4.33333V7.66667M1.9375
+                        6H15.0625L16 16H1L1.9375 6Z" stroke="currentColor" stroke-linecap="round"
+          stroke-linejoin="round" />
+      </svg>
+    </span>
+    <span class="items__count"
+      style="color: var(--secondary-color); background-color: #ffdf00;">{{ cartCount }}</span>
+  </a>
+</li>

@@ -1,0 +1,163 @@
+<!-- Start breadcrumb section -->
+<div class="breadcrumb__section breadcrumb__bg">
+  <div class="container">
+    <div class="row row-cols-1">
+      <div class="col">
+        <div class="breadcrumb__content text-center">
+          <ul class="breadcrumb__content--menu d-flex justify-content-center">
+            <li class="breadcrumb__content--menu__items"><a routerLink="/">Home</a></li>
+            <li class="breadcrumb__content--menu__items"><span>Wishlist</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End breadcrumb section -->
+
+<!-- cart section start -->
+<section class="cart__section section--padding">
+  <div class="container-fluid">
+    <div class="cart__section--inner">
+      <form>
+        <h2 class="cart__title mb-35">Wishlist</h2>
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="cart__table">
+              <table class="cart__table--inner">
+                <thead class="cart__table--header" *ngIf="wishlistItems && wishlistItems.length > 0">
+                  <tr class="cart__table--header__items">
+                    <th class="cart__table--header__list">Product</th>
+                    <th class="cart__table--header__list">Price</th>
+                    <th class="cart__table--header__list">Quantity</th>
+                    <th class="cart__table--header__list">Total</th>
+                    <th class="cart__table--header__list">Move to cart</th>
+                  </tr>
+                </thead>
+                <thead class="cart__table--header" *ngIf="isLoadingWishlist && wishlistItems.length < 1">
+                  <tr class="cart__table--header__items">
+                    <th class="cart__table--header__list">Product</th>
+                    <th class="cart__table--header__list">Price</th>
+                    <th class="cart__table--header__list">Quantity</th>
+                    <th class="cart__table--header__list">Total</th>
+                    <th class="cart__table--header__list">Move to cart</th>
+                  </tr>
+                </thead>
+                <tbody class="cart__table--body" *ngIf="isLoadingWishlist && wishlistItems.length < 1">
+                  <tr class="cart__table--body__items" *ngFor="let skeleton of ['', '']">
+                    <td class="cart__table--body__list">
+                      <ngx-skeleton-loader count="1" appearance="circle" [theme]="{
+                                      width: '100%',
+
+                                      'border-radius': 0
+                                    }">
+                      </ngx-skeleton-loader>
+                    </td>
+                    <td class="cart__table--body__list">
+                      <ngx-skeleton-loader count="1" appearance="circle" [theme]="{
+                                      width: '100%',
+
+                                      'border-radius': 0
+                                    }">
+                      </ngx-skeleton-loader>
+                    </td>
+                    <td class="cart__table--body__list">
+                      <ngx-skeleton-loader count="1" appearance="circle" [theme]="{
+                                      width: '100%',
+
+                                      'border-radius': 0
+                                    }">
+                      </ngx-skeleton-loader>
+                    </td>
+
+                    <td class="product-subtotal">
+                      <span class="amount"><ngx-skeleton-loader count="1" appearance="circle" [theme]="{
+                                      width: '100%',
+
+                                      'border-radius': 0
+                                    }">
+                        </ngx-skeleton-loader></span>
+                    </td>
+                    <td class="product-quantity">
+                      <ngx-skeleton-loader count="1" appearance="circle" [theme]="{
+                                      width: '100%',
+
+                                      'border-radius': 0
+                                    }">
+                      </ngx-skeleton-loader>
+                    </td>
+                    <td class="product-price">
+                      <span class="amount"><ngx-skeleton-loader count="1" appearance="circle" [theme]="{
+                                      width: '100%',
+                                      'border-radius': 0
+                                    }">
+                        </ngx-skeleton-loader></span>
+                    </td>
+                    <td class="product-close">
+                      <ngx-skeleton-loader count="1" appearance="circle" [theme]="{
+                                      width: '100%',
+
+                                      'border-radius': 0
+                                    }">
+                      </ngx-skeleton-loader>
+                    </td>
+                  </tr>
+                </tbody>
+                <tbody class="cart__table--body">
+                  <tr class="cart__table--body__items" *ngFor="let wishlistItem of wishlistItems; let i = index">
+                    <td class="cart__table--body__list">
+                      <div class="cart__product d-flex align-items-center">
+                        <button [title]="'Delete '+ wishlistItem.product.name"
+                          (click)="onDeleteItemFromWishlist(wishlistItem.product._id, i, +wishlistItem.product.currentPrice, +wishlistItem.quantity)" class="cart__remove--btn"
+                          aria-label="search button" type="button">
+                          <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16px"
+                            height="16px">
+                            <path
+                              d="M 4.7070312 3.2929688 L 3.2929688 4.7070312 L 10.585938 12 L 3.2929688 19.292969 L 4.7070312 20.707031 L 12 13.414062 L 19.292969 20.707031 L 20.707031 19.292969 L 13.414062 12 L 20.707031 4.7070312 L 19.292969 3.2929688 L 12 10.585938 L 4.7070312 3.2929688 z" />
+                          </svg>
+                        </button>
+                        <div class="cart__thumbnail">
+                          <a [routerLink]="'/products/'+wishlistItem.product._id"><img class="border-radius-5"
+                              [src]="wishlistItem.product.image" alt="cart-product"></a>
+                        </div>
+                        <div class="cart__content">
+                          <h3 class="cart__content--title h4"><a [routerLink]="'/products/'+wishlistItem.product._id">{{
+                              wishlistItem.product.name }}</a></h3>
+                          <!-- <span class="cart__content--variant">COLOR: Blue</span> -->
+                          <span class="cart__content--variant" *ngIf="wishlistItem.size">Size: {{ wishlistItem.size }}</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="cart__table--body__list">
+                      <span class="cart__price">{{ wishlistItem.product.currentPrice | currency: wishlistItem.product.currency
+                        }}</span>
+                    </td>
+                    <td class="cart__table--body__list">
+                      {{wishlistItem.quantity}}
+                    </td>
+                    <td class="cart__table--body__list" *ngIf="!isLoadingUpdateQuantity">
+                      <span class="cart__price end">{{ +wishlistItem.product.currentPrice * (wishlistItem.product.quantity ?
+                        +wishlistItem.product.quantity : +wishlistItem.quantity)| currency: wishlistItem.product.currency }}</span>
+                      </td>
+                      <td class="cart__table--body__list">
+                        <a class="wishlist__cart--btn primary__btn" (click)="onAddtoCart(wishlistItem, i)">Move to cart</a>
+                      </td>
+                    <td class="cart__table--body__list" *ngIf="isLoadingUpdateQuantity">
+                        <span class="cart__price end" id="loading"></span>
+                      </td>
+                  </tr>
+                </tbody>
+              </table>
+              <h1 *ngIf="!wishlistItems || wishlistItems.length <= 0 && !isLoadingWishlist"
+                class="title title-simple title-step active"><a routerLink="/cart">No Items in wishlist</a></h1>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<app-snackbar [bagType]="bagType" [isShown]="isSnackbarShown"></app-snackbar>
+<app-loading-spinner *ngIf="isLoadingCart || isLoadingWishlist || isLoadingDelete"></app-loading-spinner>
+<!-- cart section end -->

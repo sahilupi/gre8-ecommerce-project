@@ -1,0 +1,13 @@
+<li class="acc-header">
+  <a class="headerTitle">
+      {{ title }}
+  </a>
+  <span [@rotate]="!showBody?'default':'rotated'" class="mmenu-btn" (click)="toggle()"></span>
+</li>
+<li>
+<div [@smoothCollapse]="!showBody?'initial':'final'">
+  <div class="acc-body">
+      <ng-content ></ng-content>
+  </div>
+</div>
+</li>

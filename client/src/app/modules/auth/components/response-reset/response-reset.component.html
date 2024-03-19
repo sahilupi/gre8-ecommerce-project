@@ -1,0 +1,59 @@
+<div class="login__section section--padding">
+   <div class="row" *ngIf="CurrentState=='Wait'">
+        <div class="col-md-12 close-form">
+            <h2> Please Wait...</h2>
+        </div>
+    </div>
+    <div class="row"
+        *ngIf="CurrentState=='NotVerified'">
+        <div class="col-md-12">
+            <h2> Invalid URL.</h2>
+        </div>
+    </div>
+  <div class="container" *ngIf="CurrentState=='Verified'">
+    <form [formGroup]="ResponseResetForm" (ngSubmit)="ResetPassword(ResponseResetForm)">
+      <div class="login__section--inner">
+        <div class="row row-cols-md-2 row-cols-1">
+          <div class="col" style="margin: auto;">
+            <div class="account__login register">
+              <div class="account__login--header mb-25">
+                <h2 class="account__login--header__title mb-15">Reset your password</h2>
+              </div>
+              <div class="account__login--inner">
+                <label>
+                  <input class="account__login--input" placeholder="Password" type="password"
+                    formControlName="newPassword">
+                </label>
+                <small class="p-error" *ngIf="!ResponseResetForm.controls['newPassword'].valid
+                && !IsResetFormValid">
+                Password is required with atleast 4 characters.
+                </small>
+                <label>
+                  <input class="account__login--input" placeholder="Confirm Password" type="password"
+                    formControlName="confirmPassword">
+                </label>
+                <small class="p-error"
+                *ngIf="
+                (ResponseResetForm.controls['confirmPassword'].value
+                !=
+                ResponseResetForm.controls['newPassword'].value)
+                && ResponseResetForm.controls['confirmPassword'].touched && ResponseResetForm.controls['newPassword'].touched">
+                  Passwords do not match
+                </small>
+                <p class="p-error m-auto">{{ errorMessage }}</p>
+                <p class="success m-auto">{{ successMessage }}</p>
+                <button class="account__login--btn primary__btn mb-10" type="submit">Update Password</button>
+                <div class="account__login--remember position__relative">
+                  <p class="account__login--signup__text">Or Login <button type="button"
+                      routerLink="/auth/login">Login now</button></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<app-loading-spinner *ngIf="isLoading"></app-loading-spinner>

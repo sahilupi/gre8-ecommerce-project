@@ -1,0 +1,15 @@
+<section class="product__section section--padding">
+  <div class="container">
+    <div class="section__heading text-center mb-40">
+      <h2 class="section__heading--maintitle">Featured Products</h2>
+      <h5 class="section__heading--maintitle">Trending Styles</h5>
+    </div>
+    <owl-carousel-o [options]="customOptionsFeatures" class="product__section--inner">
+      <ng-container class="row mb--n30">
+        <ng-template carouselSlide *ngFor="let product of products" class="col-lg-3 col-md-4 col-sm-6 col-6 custom-col mb-30">
+          <app-product [product]="product"></app-product>
+        </ng-template>
+      </ng-container>
+    </owl-carousel-o>
+  </div>
+</section>

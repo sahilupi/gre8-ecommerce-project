@@ -1,0 +1,11 @@
+<div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-next"
+  data-swiper-slide-index="1" role="group" aria-label="2 / 6" style="width: 210px; margin-right: 60px;">
+  <div class="shop__collection--card text-center">
+    <a class="shop__collection--link" [routerLink]="'/products/collections/' + category.name.toLowerCase()">
+      <img class="shop__collection--img"
+        [src]="category.imgSrc"
+        alt="icon-img">
+      <h3 class="shop__collection--title mb-0">{{ category.name }}</h3>
+    </a>
+  </div>
+</div>

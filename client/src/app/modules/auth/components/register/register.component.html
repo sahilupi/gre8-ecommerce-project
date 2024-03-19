@@ -1,0 +1,65 @@
+<div class="login__section section--padding">
+  <div class="container">
+    <form [formGroup]="userForm" (ngSubmit)="submitForm()">
+      <div class="login__section--inner">
+        <div class="row row-cols-md-2 row-cols-1">
+          <div class="col" style="margin: auto;">
+            <div class="account__login register">
+              <div class="account__login--header mb-25">
+                <h2 class="account__login--header__title mb-15">Create an Account</h2>
+                <p class="account__login--header__desc">Register here if you are a new customer</p>
+              </div>
+              <div class="account__login--inner">
+                <label>
+                  <input class="account__login--input" placeholder="Fullname" type="text" formControlName="name">
+                </label>
+                <small class="p-error" *ngIf="(f['name'].hasError('required')
+                        && f['name'].touched) || (f['name'].hasError('required') && isSubmitted)">
+                  Please enter your full name.
+                </small>
+                <label>
+                  <input class="account__login--input" placeholder="Email Addres" type="email" formControlName="email">
+                </label>
+                <small class="p-error"
+                  *ngIf="(f['email'].hasError('required') && f['email'].touched) || (f['email'].hasError('required') && isSubmitted)">
+                  Please enter email address.
+                </small>
+                <small *ngIf="(f['email'].hasError('email') &&
+                              f['email'].touched) || f['email'].hasError('email') &&
+                              isSubmitted" class="p-error">Email is invalid</small>
+                <label>
+                  <input class="account__login--input" placeholder="Password" type="password"
+                    formControlName="password">
+                </label>
+                <small class="p-error" *ngIf="(f['password'].hasError('required')
+                && f['password'].touched) || (f['password'].hasError('required') && isSubmitted)">
+                  Please enter password.
+                </small>
+                <label>
+                  <input class="account__login--input" placeholder="Confirm Password" type="password"
+                    formControlName="confirmPassword">
+                </label>
+                <small class="p-error"
+                  *ngIf="(f['confirmPassword'].hasError('required') && f['confirmPassword'].touched) || (f['confirmPassword'].hasError('required') && isSubmitted)">
+                  Please confirm password.
+                </small>
+                <small class="p-error"
+                  *ngIf="f['confirmPassword'].hasError('confirmedValidator') || f['password'].hasError('confirmedValidator')">
+                  Passwords do not match
+                </small>
+                <small class="p-error m-auto">{{ serverErrMsg }}</small>
+                <button class="account__login--btn primary__btn mb-10" type="submit">Submit & Register</button>
+                <div class="account__login--remember position__relative">
+                  <p class="account__login--signup__text">Already have an Account? <button type="button"
+                      routerLink="/auth/login">Login now</button></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<app-loading-spinner *ngIf="isLoading"></app-loading-spinner>

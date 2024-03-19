@@ -1,0 +1,261 @@
+<main class="main__content_wrapper animate__animated animate__fadeIn">
+
+  <!-- Start breadcrumb section -->
+  <div class="breadcrumb__section breadcrumb__bg">
+    <div class="container">
+      <div class="row row-cols-1">
+        <div class="col">
+          <div class="breadcrumb__content text-center">
+            <ul class="breadcrumb__content--menu d-flex justify-content-center">
+              <li class="breadcrumb__content--menu__items"><a routerLink="/">Home</a></li>
+              <li class="breadcrumb__content--menu__items"><span>Checkout</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End breadcrumb section -->
+
+  <!-- Start checkout page area -->
+  <div class="checkout__page--area section--padding">
+    <form [formGroup]="checkoutFormGroup" (ngSubmit)="onPlaceOrder()">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-7 col-md-6">
+            <div class="main checkout__mian">
+
+              <div class="checkout__content--step section__shipping--address">
+                <div class="checkout__section--header mb-25">
+                  <h2 class="checkout__header--title h3">Shipping Address Details</h2>
+                </div>
+                <div class="section__shipping--address__content">
+                  <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6 mb-20">
+                      <div class="checkout__input--list ">
+                        <label class="checkout__input--label mb-10" for="input7">Full Name <span
+                            class="checkout__input--label__star">*</span></label>
+                        <input formControlName="name" class="checkout__input--field border-radius-5"
+                          placeholder="Full name" id="input7" type="text">
+                        <small *ngIf="(f['name'].invalid && f['name'].touched) || (f['name'].invalid  && isSubmitted)"
+                          class="p-error">Name is required</small>
+                      </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 mb-20">
+                      <div class="checkout__input--list">
+                        <label class="checkout__input--label mb-10" for="input8">Email</label>
+                        <input formControlName="email" class="checkout__input--field border-radius-5"
+                          placeholder="email (optional)" id="input8" type="email"><small
+                          *ngIf="f['email'].invalid && isSubmitted" class="p-error"><span
+                            *ngIf="f['email'].hasError('required')">email is required</span>
+                          <span *ngIf="f['email'].hasError('email')">email is invalid</span></small>
+                      </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 mb-20">
+                      <div class="checkout__input--list">
+                        <label class="checkout__input--label mb-10" for="input8">Phone<span
+                            class="checkout__input--label__star">*</span></label>
+                        <input formControlName="phone" class="checkout__input--field border-radius-5"
+                          placeholder="Phone" id="input8" type="text"><small *ngIf="f['phone'].invalid && isSubmitted"
+                          class="p-error"><span *ngIf="f['phone'].hasError('required')">Phone is required</span>
+                        </small>
+                      </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 mb-20">
+                      <div class="checkout__input--list">
+                        <label class="checkout__input--label mb-10" for="input3">Company Name</label>
+                        <input formControlName="company" class="checkout__input--field border-radius-5"
+                          placeholder="Company (optional)" id="input3" type="text">
+                      </div>
+                    </div>
+                    <div class="col-12 mb-20">
+                      <div class="checkout__input--list">
+                        <label class="checkout__input--label mb-10" for="input4">Address <span
+                            class="checkout__input--label__star">*</span></label>
+                        <input formControlName="address1" class="checkout__input--field border-radius-5"
+                          placeholder="Address1" id="input4" type="text">
+                        <small *ngIf="f['address1'].invalid && isSubmitted" class="p-error">Address1 is required</small>
+                      </div>
+                    </div>
+                    <div class="col-12 mb-20">
+                      <div class="checkout__input--list">
+                        <input formControlName="apartment" class="checkout__input--field border-radius-5"
+                          placeholder="Apartment, suite, etc. (optional)" type="text">
+                      </div>
+                    </div>
+                    <div class="col-12 mb-20">
+                      <div class="checkout__input--list">
+                        <label class="checkout__input--label mb-10" for="input5">Town/City <span
+                            class="checkout__input--label__star">*</span></label>
+                        <input formControlName="city" class="checkout__input--field border-radius-5" placeholder="City"
+                          id="input5" type="text">
+                        <small *ngIf="f['city'].invalid && isSubmitted" class="p-error">City is required</small>
+                      </div>
+                    </div>
+                    <div class="col-lg-6 mb-20">
+                      <div class="checkout__input--list">
+                        <label class="checkout__input--label mb-10" for="country">Country/region <span
+                            class="checkout__input--label__star">*</span></label>
+                        <div class="checkout__input--select select">
+                          <select formControlName="country" class="checkout__input--select__field border-radius-5"
+                            id="country">
+                            <option value="India" selected>India</option>
+                          </select>
+                        </div>
+                        <small *ngIf="f['country'].invalid && isSubmitted" class="p-error">Country is required</small>
+                      </div>
+                    </div>
+                    <div class="col-lg-6 mb-20">
+                      <div class="checkout__input--list">
+                        <label class="checkout__input--label mb-10" for="input6">Postal Code <span
+                            class="checkout__input--label__star">*</span></label>
+                        <input formControlName="postalCode" class="checkout__input--field border-radius-5"
+                          placeholder="Postal code" id="input6" type="text">
+                        <small *ngIf="f['postalCode'].invalid && isSubmitted" class="p-error">Postal Code is
+                          required</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="order-notes mb-20">
+                <label class="checkout__input--label mb-10" for="order">Order Notes <span
+                    class="checkout__input--label__star">*</span></label>
+                <textarea formControlName="orderNotes" class="checkout__notes--textarea__field border-radius-5"
+                  id="order" placeholder="Notes about your order, e.g. special notes for delivery."
+                  spellcheck="false"></textarea>
+              </div>
+              <div class="checkout__content--step__footer d-flex align-items-center">
+                <a class="previous__link--content" routerLink="/cart">Return to cart</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-5 col-md-6">
+            <aside class="checkout__sidebar sidebar border-radius-10">
+              <h2 class="checkout__order--summary__title text-center mb-15">Your Order Summary</h2>
+              <div class="cart__table checkout__product--table">
+                <table class="cart__table--inner">
+                  <tbody class="cart__table--body">
+                    <tr class="cart__table--body__items" *ngFor="let item of orderItems">
+                      <td class="cart__table--body__list">
+                        <div class="product__image two  d-flex align-items-center">
+                          <div class="product__thumbnail border-radius-5">
+                            <a class="display-block" [routerLink]="'/products/' + item.productId._id">
+                              <img class="display-block border-radius-5" [src]="item.productId.image"
+                                alt="cart-product"></a>
+                            <span class="product__thumbnail--quantity">{{ item.quantity }}</span>
+                          </div>
+                          <div class="product__description">
+                            <h4 class="product__description--name"><a
+                                [routerLink]="'/products/' + item.productId._id">{{
+                                item.productId.name }}</a></h4>
+                            <span class="product__description--variant">Category: {{
+                              item.productId.categories[item.productId.categories.length - 1] }}</span>
+                              <span class="cart__content--variant" *ngIf="item.size">Size: {{ item.size }}</span>
+                          </div>
+                        </div>
+                      </td>
+                      <td class="cart__table--body__list">
+                        <span class="cart__price">{{ +item.productId.currentPrice * +item.quantity | currency:
+                          item.productId.currency }}</span>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <!-- <div class="checkout__discount--code">
+                          <form class="d-flex" action="#">
+                              <label>
+                                  <input class="checkout__discount--code__input--field border-radius-5" placeholder="Gift card or discount code"  type="text">
+                              </label>
+                              <button class="checkout__discount--code__btn primary__btn border-radius-5" type="submit">Apply</button>
+                          </form>
+                      </div> -->
+              <div class="checkout__total">
+                <table class="checkout__total--table">
+                  <tbody class="checkout__total--body">
+                    <tr class="checkout__total--items">
+                      <td class="checkout__total--title text-left">Subtotal </td>
+                      <td class="checkout__total--amount text-right">{{ subTotal() | currency : 'INR' }}</td>
+                    </tr>
+                    <tr class="checkout__total--items">
+                      <td class="checkout__total--title text-left">Shipping</td>
+                      <td class="checkout__total--calculated__text text-right">{{ subTotal() > 600 ? 0 : 120 | currency:
+                        'INR' }}</td>
+                    </tr>
+                  </tbody>
+                  <tfoot class="checkout__total--footer">
+                    <tr class="checkout__total--footer__items">
+                      <td class="checkout__total--footer__title checkout__total--footer__list text-left">Total </td>
+                      <td class="checkout__total--footer__amount checkout__total--footer__list text-right">{{
+                        grandTotal()
+                        |
+                        currency : 'INR' }}</td>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+              <div class="payment__history mb-30">
+                <h3 class="payment__history--title mb-20">Payment</h3>
+                <ul class="payment__history--inner d-flex">
+                  <li class="payment__history--list"><button class="payment__history--link primary__btn"
+                      type="submit">Razorpay</button></li>
+                </ul>
+              </div>
+              <p class="error__content--desc p-error">{{ serverErrMsg }}</p>
+              <button class="checkout__now--btn primary__btn" type="submit">Checkout Now</button>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <!-- End checkout page area -->
+
+  <!-- Start feature section -->
+  <section class="feature__section section--padding pt-0">
+    <div class="container">
+      <div class="feature__inner d-flex justify-content-between">
+        <div class="feature__items d-flex align-items-center">
+          <div class="feature__icon">
+            <img src="assets/img/other/feature1.webp" alt="img">
+          </div>
+          <div class="feature__content">
+            <h2 class="feature__content--title h3">Free Shipping</h2>
+            <p class="feature__content--desc">Free shipping over $100</p>
+          </div>
+        </div>
+        <div class="feature__items d-flex align-items-center">
+          <div class="feature__icon ">
+            <img src="assets/img/other/feature2.webp" alt="img">
+          </div>
+          <div class="feature__content">
+            <h2 class="feature__content--title h3">Support 24/7</h2>
+            <p class="feature__content--desc">Contact us 24 hours a day</p>
+          </div>
+        </div>
+        <div class="feature__items d-flex align-items-center">
+          <div class="feature__icon">
+            <img src="assets/img/other/feature3.webp" alt="img">
+          </div>
+          <div class="feature__content">
+            <h2 class="feature__content--title h3">100% Money Back</h2>
+            <p class="feature__content--desc">You have 30 days to Return</p>
+          </div>
+        </div>
+        <div class="feature__items d-flex align-items-center">
+          <div class="feature__icon">
+            <img src="assets/img/other/feature4.webp" alt="img">
+          </div>
+          <div class="feature__content">
+            <h2 class="feature__content--title h3">Payment Secure</h2>
+            <p class="feature__content--desc">We ensure secure payment</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <app-loading-spinner *ngIf="isLoading"></app-loading-spinner>
+  <!-- End feature section -->
+</main>

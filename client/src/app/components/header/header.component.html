@@ -1,0 +1,263 @@
+<div class="header__topbar bg__primary">
+  <div class="container">
+    <div class="header__topbar--inner text-center">
+      <p class="header__info--text text-white">
+        <marquee>2% of gre8 annual sales will go directly to child services charities to provide help and raise money
+          for those in need.</marquee>
+      </p>
+    </div>
+  </div>
+</div>
+<header class="header__section">
+  <div class="main__header position__relative header__sticky" id="main__header">
+    <div class="container">
+      <div class="main__header--inner d-flex justify-content-between align-items-center">
+        <div class="offcanvas__header--menu__open" (click)="toggleMobileMenu()" #toggleButton>
+          <a class="offcanvas__header--menu__open--btn" href="javascript:void(0)" data-offcanvas>
+            <svg xmlns="http://www.w3.org/2000/svg" class="ionicon offcanvas__header--menu__open--svg"
+              viewBox="0 0 512 512">
+              <path fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10"
+                stroke-width="32" d="M80 160h352M80 256h352M80 352h352" />
+            </svg>
+            <span class="visually-hidden">Offcanvas Menu Open</span>
+          </a>
+        </div>
+        <div class="main__logo">
+          <h1 class="main__logo--title"><a class="main__logo--link" routerLink="/">
+              <img class="main__logo--img" src="assets/img/gret/gre8-logo.png" width="100" alt="logo-img">
+            </a>
+          </h1>
+        </div>
+        <div class="header__menu d-none d-lg-block">
+          <nav class="header__menu--navigation">
+            <ul class="header__menu--wrapper d-flex">
+              <li class="header__menu--items">
+                <a class="header__menu--link active" routerLink="/">Home
+                </a>
+              </li>
+              <li class="header__menu--items">
+                <a class="header__menu--link" routerLink="/products/collections/men's">Men </a>
+              </li>
+
+              <li class="header__menu--items">
+                <a class="header__menu--link">Women </a>
+                <svg class="menu__arrowdown--icon" xmlns="http://www.w3.org/2000/svg" width="12" height="7.41"
+                  viewBox="0 0 12 7.41">
+                  <path d="M16.59,8.59,12,13.17,7.41,8.59,6,10l6,6,6-6Z" transform="translate(-6 -8.59)"
+                    fill="currentColor" opacity="0.7" />
+                </svg>
+                <ul class="header__sub--menu">
+                  <li class="header__sub--menu__items">
+                    <a class="header__menu--link active" routerLink="/products/collections/jewellery">Jewellery</a>
+                  </li>
+                  <li class="header__sub--menu__items">
+                    <a class="header__menu--link active" routerLink="/products/collections/tops">Tops</a>
+                  </li>
+                  <li class="header__sub--menu__items">
+                    <a class="header__menu--link active" routerLink="/products/collections/jeans">Jeans</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="header__menu--items">
+                <a class="header__menu--link">Silver Jewellery</a>
+                <svg class="menu__arrowdown--icon" xmlns="http://www.w3.org/2000/svg" width="12" height="7.41"
+                  viewBox="0 0 12 7.41">
+                  <path d="M16.59,8.59,12,13.17,7.41,8.59,6,10l6,6,6-6Z" transform="translate(-6 -8.59)"
+                    fill="currentColor" opacity="0.7" />
+                </svg>
+                <ul class="header__sub--menu">
+                  <li class="header__sub--menu__items">
+                    <a class="header__menu--link active" routerLink="/products/collections/necklace">Necklaces</a>
+                  </li>
+                  <li class="header__sub--menu__items">
+                    <a class="header__menu--link active" routerLink="/products/collections/nose-pin">Nose Pin</a>
+                  </li>
+                  <li class="header__sub--menu__items">
+                    <a class="header__menu--link active" routerLink="/products/collections/ring">Rings</a>
+                  </li>
+                  <li class="header__sub--menu__items">
+                    <a class="header__menu--link active" routerLink="/products/collections/anklet">Anklets</a>
+                  </li>
+                  <li class="header__sub--menu__items">
+                    <a class="header__menu--link active" routerLink="/products/collections/stud">Studs</a>
+                  </li>
+                  <li class="header__sub--menu__items">
+                    <a class="header__menu--link active" routerLink="/products/collections/stamp">Stamps</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="header__menu--items">
+                <a class="header__menu--link active" routerLink="/products/collections/books">Books
+                </a>
+              </li>
+              <li class="header__menu--items">
+                <a class="header__menu--link active" routerLink="/products/collections/all">Shop
+                </a>
+              </li>
+              <li class="header__menu--items mega__menu--items" *ngIf="!isUserLoggedIn()">
+                <a class="header__menu--link" routerLink="/auth/login">Login
+                </a>
+              </li>
+              <li class="header__menu--items mega__menu--items" *ngIf="isUserLoggedIn()">
+                <a class="header__menu--link" (click)="onLogout()">Logout
+                </a>
+              </li>
+
+            </ul>
+          </nav>
+        </div>
+        <div class="header__account">
+          <ul class="header__account--wrapper d-flex align-items-center">
+            <li class="header__account--items header__account--search__items">
+              <a class="header__account--btn search__open--btn" (click)="openSearchBar()">
+                <span class="header__account--btn__icon">
+                  <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16 16L11 11M12.6667 6.83333C12.6667 7.59938
+                            12.5158 8.35792 12.2226 9.06565C11.9295 9.77339
+                            11.4998 10.4164 10.9581 10.9581C10.4164 11.4998
+                            9.77339 11.9295 9.06565 12.2226C8.35792 12.5158
+                            7.59938 12.6667 6.83333 12.6667C6.06729 12.6667
+                            5.30875 12.5158 4.60101 12.2226C3.89328 11.9295
+                            3.25022 11.4998 2.70854 10.9581C2.16687 10.4164
+                            1.73719 9.77339 1.44404 9.06565C1.15088 8.35792 1
+                            7.59938 1 6.83333C1 5.28624 1.61458 3.80251 2.70854
+                            2.70854C3.80251 1.61458 5.28624 1 6.83333 1C8.38043
+                            1 9.86416 1.61458 10.9581 2.70854C12.0521 3.80251
+                            12.6667 5.28624 12.6667 6.83333Z" stroke="currentColor" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                  </svg>
+                </span>
+                <span class="visually-hidden">Search</span>
+              </a>
+            </li>
+            <li class="header__account--items">
+              <a class="header__account--btn" routerLink="/user/dashboard">
+                <span class="header__account--btn__icon">
+                  <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M16 16V14.3333C16 13.4493 15.6049 12.6014 14.9016 11.9763C14.1984 11.3512 13.2446 11 12.25 11H4.75C3.75544 11 2.80161 11.3512 2.09835 11.9763C1.39509 12.6014 1 13.4493 1 14.3333V16"
+                      stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path
+                      d="M8.5 7.66667C10.5711 7.66667 12.25 6.17428 12.25 4.33333C12.25 2.49238 10.5711 1 8.5 1C6.42893 1 4.75 2.49238 4.75 4.33333C4.75 6.17428 6.42893 7.66667 8.5 7.66667Z"
+                      stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
+                  </svg>
+                </span>
+                <span class="visually-hidden">My Account</span>
+              </a>
+            </li>
+            <app-wishlist-icon></app-wishlist-icon>
+            <app-cart-icon></app-cart-icon>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Start Offcanvas header menu -->
+  <div class="offcanvas__header" [ngClass]="isMenuOpen ? 'open' : ''" #menu>
+    <div class="offcanvas__inner">
+      <div class="offcanvas__logo">
+        <a class="offcanvas__logo_link" routerLink="/" (click)="toggleMobileMenu()">
+          <img src="assets/img/gret/gre8-logo.png" alt="Logo-img" width="158" height="36">
+        </a>
+        <button class="offcanvas__close--btn" data-offcanvas (click)="toggleMobileMenu()">close</button>
+      </div>
+
+      <nav class="offcanvas__menu">
+        <ul class="offcanvas__menu_ul">
+          <li class="offcanvas__menu_li">
+            <a class="offcanvas__menu_item" routerLink="/" (click)="toggleMobileMenu()">Home</a>
+          </li>
+
+          <li class="offcanvas__menu_li">
+            <a class="offcanvas__menu_item" routerLink="/products/collections/men's"
+              (click)="toggleMobileMenu()">Men</a>
+          </li>
+
+          <li class="offcanvas__menu_li">
+            <a class="offcanvas__menu_item">
+              <a class="accordion" (click)="toggleAccordian($event)"> Women </a>
+              <div class="panel" hide="!item.isActive">
+                <p><a class="accoridion-a" (click)="toggleMobileMenu()" routerLink="/products/collections/jewellery">
+                    Jewellery</a></p>
+                <!-- <p><a class="accoridion-a" (click)="toggleMobileMenu()" routerLink="/products/collections/accessories">
+                    Accessories</a></p> -->
+                <p><a class="accoridion-a" (click)="toggleMobileMenu()" routerLink="/products/collections/tops">
+                    Tops</a></p>
+                <p><a class="accoridion-a" (click)="toggleMobileMenu()" routerLink="/products/collections/jeans">
+                    Jeans</a></p>
+              </div>
+            </a>
+          </li>
+
+          <li class="offcanvas__menu_li">
+            <a class="offcanvas__menu_item">
+              <a class="accordion" (click)="toggleAccordian($event)">Silver Jewellery </a>
+              <div class="panel" hide="!item.isActive">
+                <p><a class="accoridion-a" (click)="toggleMobileMenu()" routerLink="/products/collections/necklaces">
+                    Necklaces</a></p>
+                <p><a class="accoridion-a" (click)="toggleMobileMenu()" routerLink="/products/collections/nose-pin">
+                    Nose Pin</a></p>
+                <p><a class="accoridion-a" (click)="toggleMobileMenu()" routerLink="/products/collections/rings">
+                    Rings</a></p>
+                <p><a class="accoridion-a" (click)="toggleMobileMenu()" routerLink="/products/collections/anklet">
+                    Anklets</a></p>
+                <p><a class="accoridion-a" (click)="toggleMobileMenu()" routerLink="/products/collections/stud">
+                    Studs</a></p>
+                <p><a class="accoridion-a" (click)="toggleMobileMenu()" routerLink="/products/collections/stamp">
+                    Stamps</a></p>
+              </div>
+            </a>
+          </li>
+          <li class="offcanvas__menu_li">
+            <a class="offcanvas__menu_item" routerLink="/products/collections/books"
+              (click)="toggleMobileMenu()">Books</a>
+          </li>
+          <!-- <li class="offcanvas__menu_li">
+            <a class="offcanvas__menu_item" routerLink="/products/collections/accessories"
+              (click)="toggleMobileMenu()">Accessories</a>
+          </li> -->
+          <li class="offcanvas__menu_li">
+            <a class="offcanvas__menu_item" routerLink="/products/collections/all" (click)="toggleMobileMenu()">Shop</a>
+          </li>
+          <li class="offcanvas__menu_li" *ngIf="isUserLoggedIn()">
+            <a class="offcanvas__menu_item" (click)="toggleMobileMenu();onLogout()">Logout</a>
+          </li>
+        </ul>
+        <div class="offcanvas__account--items" *ngIf="!isUserLoggedIn()">
+          <a class="offcanvas__account--items__btn d-flex align-items-center" routerLink="/auth/login"
+            (click)="toggleMobileMenu()">
+            <span class="offcanvas__account--items__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20.51" height="19.443" viewBox="0 0 512 512">
+                <path d="M344 144c-3.92 52.87-44 96-88 96s-84.15-43.12-88-96c-4-55 35-96 88-96s92 42 88 96z" fill="none"
+                  stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"></path>
+                <path
+                  d="M256 304c-87 0-175.3 48-191.64 138.6C62.39 453.52 68.57 464 80 464h352c11.44 0 17.62-10.48 15.65-21.4C431.3 352 343 304 256 304z"
+                  fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"></path>
+              </svg>
+            </span>
+            <span class="offcanvas__account--items__label">Login / Register</span>
+          </a>
+        </div>
+        <div class="offcanvas__account--items" *ngIf="isUserLoggedIn()">
+          <a class="offcanvas__account--items__btn d-flex align-items-center" routerLink="/user/dashboard"
+            (click)="toggleMobileMenu()">
+            <span class="offcanvas__account--items__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20.51" height="19.443" viewBox="0 0 512 512">
+                <path d="M344 144c-3.92 52.87-44 96-88 96s-84.15-43.12-88-96c-4-55 35-96 88-96s92 42 88 96z" fill="none"
+                  stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"></path>
+                <path
+                  d="M256 304c-87 0-175.3 48-191.64 138.6C62.39 453.52 68.57 464 80 464h352c11.44 0 17.62-10.48 15.65-21.4C431.3 352 343 304 256 304z"
+                  fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"></path>
+              </svg>
+            </span>
+            <span class="offcanvas__account--items__label">My Account</span>
+          </a>
+        </div>
+      </nav>
+    </div>
+  </div>
+  <!-- End Offcanvas header menu -->
+  <app-search></app-search>
+
+</header>

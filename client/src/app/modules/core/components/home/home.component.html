@@ -1,0 +1,516 @@
+<main class="main__content_wrapper">
+  <!-- <section class="home-hero-video">
+    <a class="home-hero-video__wrapper">
+      <div class="home-hero-video__video-wrapper hide-phone ir ir--home-hero-video" style="width: 100vw">
+        <video id="vid" aria-label="video" width="100%" controlslist="nodownload" autoplay="autoplay" loop="loop" muted="muted" playsinline="playsinline">
+          <source src="assets/video/book-video.mp4" type="video/mp4">
+        </video>
+      </div>
+    </a>
+  </section> -->
+  <!-- Start slider section -->
+  <!-- <section class="shop__collection--section">
+    <div class="container">
+      <owl-carousel-o [options]="customOptionsCategorySmall" class="shop__collection--column5 swiper swiper-initialized
+        swiper-horizontal swiper-pointer-events">
+        <ng-container>
+          <ng-template class="slide" carouselSlide *ngFor="let category of categoriesSmall">
+            <app-category-small [category]="category"></app-category-small>
+          </ng-template>
+        </ng-container>
+      </owl-carousel-o>
+    </div>
+  </section> -->
+  <section class="hero__slider--section mobile-only">
+    <div class="hero__slider--activation swiper swiper-initialized
+      swiper-horizontal swiper-pointer-events">
+      <owl-carousel-o [options]="customOptionshome" class="swiper-wrapper animate__animated animate-fadeInDown">
+        <ng-container>
+          <ng-template class="slide" carouselSlide>
+            <div class="swiper-slide swiper-slide-active" data-swiper-slide-index="1" role="group" aria-label="2 / 3">
+              <div class="home__three--slider__items">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-lg-8 col-md-7 offset-lg-2">
+                      <div class="slider__content text-center">
+                        <h2 class="slider__maintitle text__primary h1">Women's Collection</h2>
+                        <a class="primary__btn slider__btn" routerLink="products/collections/women">
+                          SHOP NOW
+                          <svg width="17" height="12" viewBox="0 0 17 12" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15.9732 5.19375L11.1893 0.460018C11.1225
+                              0.392216 11.0412 0.338185 10.9507 0.301395C10.8601
+                              0.264605 10.7623 0.245867 10.6636 0.246372C10.5648
+                              0.246877 10.4672 0.266615 10.377 0.304329C10.2869
+                              0.342044 10.2061 0.396903 10.14 0.465385C10.001
+                              0.610077 9.9245 0.79778 9.92549 0.992021C9.92649
+                              1.18626 10.0049 1.37316 10.1454 1.51643L13.6531
+                              4.9864L0.935903 5.05145C0.734471 5.06613 0.546408
+                              5.15137 0.409525 5.29006C0.272641 5.42874 0.197086
+                              5.61057 0.19805 5.799C0.199014 5.98743 0.276425
+                              6.16848 0.41472 6.30575C0.553015 6.44303 0.74194
+                              6.52635 0.943512 6.53896L13.6586 6.47392L10.1866
+                              9.98155C10.0475 10.1262 9.97108 10.3139 9.97207
+                              10.5082C9.97306 10.7024 10.0514 10.8893 10.192
+                              11.0326C10.2588 11.1004 10.3401 11.1544 10.4306
+                              11.1912C10.5212 11.228 10.6189 11.2467 10.7177
+                              11.2462C10.8165 11.2457 10.9141 11.226 11.0042
+                              11.1883C11.0944 11.1506 11.1751 11.0957 11.2413
+                              11.0272L15.9786 6.25458C16.1206 6.1093 16.1989
+                              5.91956
+                              16.1979 5.72303C16.1969 5.5265 16.1167 5.33757
+                              15.9732
+                              5.19375Z" fill="currentColor"></path>
+                          </svg>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="hero__slider--layer style3">
+                  <img class="slider__layer--img" src="assets/img/gret/cover-photo.jpeg" alt="slider-img">
+                </div>
+              </div>
+            </div>
+          </ng-template>
+          <ng-template class="slide" carouselSlide>
+            <div class="swiper-slide swiper-slide-prev" data-swiper-slide-index="0" role="group" aria-label="1 / 3">
+              <div class="home__three--slider__items">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-lg-8 col-md-7 offset-lg-2">
+                      <div class="slider__content text-center">
+                        <h2 class="slider__maintitle text__primary h1">Necklaces</h2>
+                        <a class="primary__btn slider__btn" routerLink="products/collections/necklaces">
+                          SHOP NOW
+                          <svg width="17" height="12" viewBox="0 0 17 12" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15.9732 5.19375L11.1893 0.460018C11.1225
+                              0.392216 11.0412 0.338185 10.9507 0.301395C10.8601
+                              0.264605 10.7623 0.245867 10.6636 0.246372C10.5648
+                              0.246877 10.4672 0.266615 10.377 0.304329C10.2869
+                              0.342044 10.2061 0.396903 10.14 0.465385C10.001
+                              0.610077 9.9245 0.79778 9.92549 0.992021C9.92649
+                              1.18626 10.0049 1.37316 10.1454 1.51643L13.6531
+                              4.9864L0.935903 5.05145C0.734471 5.06613 0.546408
+                              5.15137 0.409525 5.29006C0.272641 5.42874 0.197086
+                              5.61057 0.19805 5.799C0.199014 5.98743 0.276425
+                              6.16848 0.41472 6.30575C0.553015 6.44303 0.74194
+                              6.52635 0.943512 6.53896L13.6586 6.47392L10.1866
+                              9.98155C10.0475 10.1262 9.97108 10.3139 9.97207
+                              10.5082C9.97306 10.7024 10.0514 10.8893 10.192
+                              11.0326C10.2588 11.1004 10.3401 11.1544 10.4306
+                              11.1912C10.5212 11.228 10.6189 11.2467 10.7177
+                              11.2462C10.8165 11.2457 10.9141 11.226 11.0042
+                              11.1883C11.0944 11.1506 11.1751 11.0957 11.2413
+                              11.0272L15.9786 6.25458C16.1206 6.1093 16.1989
+                              5.91956
+                              16.1979 5.72303C16.1969 5.5265 16.1167 5.33757
+                              15.9732
+                              5.19375Z" fill="currentColor"></path>
+                          </svg>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="hero__slider--layer style3">
+                  <img class="slider__layer--img" src="https://gre8.in/images/jewellery/92.5-silver-rhodium-plated-necklace.jpeg" alt="slider-img">
+                </div>
+              </div>
+            </div>
+          </ng-template>
+        </ng-container>
+      </owl-carousel-o>
+      <div>
+      </div>
+      <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+    </div>
+  </section>
+
+  <section class="hero__slider--section desktop-only">
+    <div class="hero__slider--activation swiper swiper-initialized
+      swiper-horizontal swiper-pointer-events">
+      <owl-carousel-o [options]="customOptionshome" class="swiper-wrapper animate__animated animate-fadeInDown">
+        <ng-container>
+          <ng-template class="slide" carouselSlide>
+            <div class="swiper-slide swiper-slide-duplicate
+              swiper-slide-duplicate-next" data-swiper-slide-index="2" role="group" aria-label="3 / 3">
+              <div class="home__three--slider__items">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-lg-8 col-md-7 offset-lg-2">
+                      <div class="slider__content text-center">
+                        <h2 class="slider__maintitle text__primary h1">Jewellery to fit every budget, occasion, and taste
+                        </h2>
+                        <a class="primary__btn slider__btn" routerLink="products/collections/all">
+                          SHOP NOW
+                          <svg width="17" height="12" viewBox="0 0 17 12" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15.9732 5.19375L11.1893 0.460018C11.1225
+                              0.392216 11.0412 0.338185 10.9507 0.301395C10.8601
+                              0.264605 10.7623 0.245867 10.6636 0.246372C10.5648
+                              0.246877 10.4672 0.266615 10.377 0.304329C10.2869
+                              0.342044 10.2061 0.396903 10.14 0.465385C10.001
+                              0.610077 9.9245 0.79778 9.92549 0.992021C9.92649
+                              1.18626 10.0049 1.37316 10.1454 1.51643L13.6531
+                              4.9864L0.935903 5.05145C0.734471 5.06613 0.546408
+                              5.15137 0.409525 5.29006C0.272641 5.42874 0.197086
+                              5.61057 0.19805 5.799C0.199014 5.98743 0.276425
+                              6.16848 0.41472 6.30575C0.553015 6.44303 0.74194
+                              6.52635 0.943512 6.53896L13.6586 6.47392L10.1866
+                              9.98155C10.0475 10.1262 9.97108 10.3139 9.97207
+                              10.5082C9.97306 10.7024 10.0514 10.8893 10.192
+                              11.0326C10.2588 11.1004 10.3401 11.1544 10.4306
+                              11.1912C10.5212 11.228 10.6189 11.2467 10.7177
+                              11.2462C10.8165 11.2457 10.9141 11.226 11.0042
+                              11.1883C11.0944 11.1506 11.1751 11.0957 11.2413
+                              11.0272L15.9786 6.25458C16.1206 6.1093 16.1989
+                              5.91956
+                              16.1979 5.72303C16.1969 5.5265 16.1167 5.33757
+                              15.9732
+                              5.19375Z" fill="currentColor"></path>
+                          </svg>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="hero__slider--layer style3">
+                  <img class="slider__layer--img" src="assets/img/slider/home3-slider3-layer.webp" alt="slider-img">
+                </div>
+              </div>
+            </div>
+          </ng-template>
+          <ng-template class="slide" carouselSlide>
+            <div class="swiper-slide swiper-slide-prev" data-swiper-slide-index="0" role="group" aria-label="1 / 3">
+              <div class="home__three--slider__items">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-lg-8 col-md-7 offset-lg-2">
+                      <div class="slider__content text-center">
+                        <h2 class="slider__maintitle text__primary h1">Jewelry
+                          to
+                          fit every budget, occasion, and taste</h2>
+                        <a class="primary__btn slider__btn" routerLink="products/collections/all">
+                          SHOP NOW
+                          <svg width="17" height="12" viewBox="0 0 17 12" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15.9732 5.19375L11.1893 0.460018C11.1225
+                              0.392216 11.0412 0.338185 10.9507 0.301395C10.8601
+                              0.264605 10.7623 0.245867 10.6636 0.246372C10.5648
+                              0.246877 10.4672 0.266615 10.377 0.304329C10.2869
+                              0.342044 10.2061 0.396903 10.14 0.465385C10.001
+                              0.610077 9.9245 0.79778 9.92549 0.992021C9.92649
+                              1.18626 10.0049 1.37316 10.1454 1.51643L13.6531
+                              4.9864L0.935903 5.05145C0.734471 5.06613 0.546408
+                              5.15137 0.409525 5.29006C0.272641 5.42874 0.197086
+                              5.61057 0.19805 5.799C0.199014 5.98743 0.276425
+                              6.16848 0.41472 6.30575C0.553015 6.44303 0.74194
+                              6.52635 0.943512 6.53896L13.6586 6.47392L10.1866
+                              9.98155C10.0475 10.1262 9.97108 10.3139 9.97207
+                              10.5082C9.97306 10.7024 10.0514 10.8893 10.192
+                              11.0326C10.2588 11.1004 10.3401 11.1544 10.4306
+                              11.1912C10.5212 11.228 10.6189 11.2467 10.7177
+                              11.2462C10.8165 11.2457 10.9141 11.226 11.0042
+                              11.1883C11.0944 11.1506 11.1751 11.0957 11.2413
+                              11.0272L15.9786 6.25458C16.1206 6.1093 16.1989
+                              5.91956
+                              16.1979 5.72303C16.1969 5.5265 16.1167 5.33757
+                              15.9732
+                              5.19375Z" fill="currentColor"></path>
+                          </svg>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="hero__slider--layer style3">
+                  <img class="slider__layer--img" src="assets/img/slider/home3-slider1-layer.webp" alt="slider-img">
+                </div>
+              </div>
+            </div>
+          </ng-template>
+          <ng-template class="slide" carouselSlide>
+            <div class="swiper-slide swiper-slide-active" data-swiper-slide-index="1" role="group" aria-label="2 / 3">
+              <div class="home__three--slider__items">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-lg-8 col-md-7 offset-lg-2">
+                      <div class="slider__content text-center">
+                        <h2 class="slider__maintitle text__primary h1">Jewelry
+                          to
+                          fit every budget, occasion, and taste</h2>
+                        <a class="primary__btn slider__btn" routerLink="products/collections/all">
+                          SHOP NOW
+                          <svg width="17" height="12" viewBox="0 0 17 12" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15.9732 5.19375L11.1893 0.460018C11.1225
+                              0.392216 11.0412 0.338185 10.9507 0.301395C10.8601
+                              0.264605 10.7623 0.245867 10.6636 0.246372C10.5648
+                              0.246877 10.4672 0.266615 10.377 0.304329C10.2869
+                              0.342044 10.2061 0.396903 10.14 0.465385C10.001
+                              0.610077 9.9245 0.79778 9.92549 0.992021C9.92649
+                              1.18626 10.0049 1.37316 10.1454 1.51643L13.6531
+                              4.9864L0.935903 5.05145C0.734471 5.06613 0.546408
+                              5.15137 0.409525 5.29006C0.272641 5.42874 0.197086
+                              5.61057 0.19805 5.799C0.199014 5.98743 0.276425
+                              6.16848 0.41472 6.30575C0.553015 6.44303 0.74194
+                              6.52635 0.943512 6.53896L13.6586 6.47392L10.1866
+                              9.98155C10.0475 10.1262 9.97108 10.3139 9.97207
+                              10.5082C9.97306 10.7024 10.0514 10.8893 10.192
+                              11.0326C10.2588 11.1004 10.3401 11.1544 10.4306
+                              11.1912C10.5212 11.228 10.6189 11.2467 10.7177
+                              11.2462C10.8165 11.2457 10.9141 11.226 11.0042
+                              11.1883C11.0944 11.1506 11.1751 11.0957 11.2413
+                              11.0272L15.9786 6.25458C16.1206 6.1093 16.1989
+                              5.91956
+                              16.1979 5.72303C16.1969 5.5265 16.1167 5.33757
+                              15.9732
+                              5.19375Z" fill="currentColor"></path>
+                          </svg>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="hero__slider--layer style3">
+                  <img class="slider__layer--img" src="assets/img/slider/home3-slider2-layer.webp" alt="slider-img">
+                </div>
+              </div>
+            </div>
+          </ng-template>
+          <ng-template class="slide" carouselSlide>
+            <div class="swiper-slide swiper-slide-next" data-swiper-slide-index="2" role="group" aria-label="3 / 3">
+              <div class="home__three--slider__items">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-lg-8 col-md-7 offset-lg-2">
+                      <div class="slider__content text-center">
+                        <h2 class="slider__maintitle text__primary h1">Jewelry
+                          to
+                          fit every budget, occasion, and taste</h2>
+                        <a class="primary__btn slider__btn" routerLink="products/collections/all">
+                          SHOP NOW
+                          <svg width="17" height="12" viewBox="0 0 17 12" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15.9732 5.19375L11.1893 0.460018C11.1225
+                              0.392216 11.0412 0.338185 10.9507 0.301395C10.8601
+                              0.264605 10.7623 0.245867 10.6636 0.246372C10.5648
+                              0.246877 10.4672 0.266615 10.377 0.304329C10.2869
+                              0.342044 10.2061 0.396903 10.14 0.465385C10.001
+                              0.610077 9.9245 0.79778 9.92549 0.992021C9.92649
+                              1.18626 10.0049 1.37316 10.1454 1.51643L13.6531
+                              4.9864L0.935903 5.05145C0.734471 5.06613 0.546408
+                              5.15137 0.409525 5.29006C0.272641 5.42874 0.197086
+                              5.61057 0.19805 5.799C0.199014 5.98743 0.276425
+                              6.16848 0.41472 6.30575C0.553015 6.44303 0.74194
+                              6.52635 0.943512 6.53896L13.6586 6.47392L10.1866
+                              9.98155C10.0475 10.1262 9.97108 10.3139 9.97207
+                              10.5082C9.97306 10.7024 10.0514 10.8893 10.192
+                              11.0326C10.2588 11.1004 10.3401 11.1544 10.4306
+                              11.1912C10.5212 11.228 10.6189 11.2467 10.7177
+                              11.2462C10.8165 11.2457 10.9141 11.226 11.0042
+                              11.1883C11.0944 11.1506 11.1751 11.0957 11.2413
+                              11.0272L15.9786 6.25458C16.1206 6.1093 16.1989
+                              5.91956
+                              16.1979 5.72303C16.1969 5.5265 16.1167 5.33757
+                              15.9732
+                              5.19375Z" fill="currentColor"></path>
+                          </svg>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="hero__slider--layer style3">
+                  <img class="slider__layer--img" src="assets/img/slider/home3-slider3-layer.webp" alt="slider-img">
+                </div>
+              </div>
+            </div>
+          </ng-template>
+          <ng-template class="slide" carouselSlide>
+            <div class="swiper-slide swiper-slide-duplicate
+              swiper-slide-duplicate-prev" data-swiper-slide-index="0" role="group" aria-label="1 / 3">
+              <div class="home__three--slider__items">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-lg-8 col-md-7 offset-lg-2">
+                      <div class="slider__content text-center">
+                        <h2 class="slider__maintitle text__primary h1">Jewelry
+                          to
+                          fit every budget, occasion, and taste</h2>
+                        <a class="primary__btn slider__btn" routerLink="products/collections/all">
+                          SHOP NOW
+                          <svg width="17" height="12" viewBox="0 0 17 12" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15.9732 5.19375L11.1893 0.460018C11.1225
+                              0.392216 11.0412 0.338185 10.9507 0.301395C10.8601
+                              0.264605 10.7623 0.245867 10.6636 0.246372C10.5648
+                              0.246877 10.4672 0.266615 10.377 0.304329C10.2869
+                              0.342044 10.2061 0.396903 10.14 0.465385C10.001
+                              0.610077 9.9245 0.79778 9.92549 0.992021C9.92649
+                              1.18626 10.0049 1.37316 10.1454 1.51643L13.6531
+                              4.9864L0.935903 5.05145C0.734471 5.06613 0.546408
+                              5.15137 0.409525 5.29006C0.272641 5.42874 0.197086
+                              5.61057 0.19805 5.799C0.199014 5.98743 0.276425
+                              6.16848 0.41472 6.30575C0.553015 6.44303 0.74194
+                              6.52635 0.943512 6.53896L13.6586 6.47392L10.1866
+                              9.98155C10.0475 10.1262 9.97108 10.3139 9.97207
+                              10.5082C9.97306 10.7024 10.0514 10.8893 10.192
+                              11.0326C10.2588 11.1004 10.3401 11.1544 10.4306
+                              11.1912C10.5212 11.228 10.6189 11.2467 10.7177
+                              11.2462C10.8165 11.2457 10.9141 11.226 11.0042
+                              11.1883C11.0944 11.1506 11.1751 11.0957 11.2413
+                              11.0272L15.9786 6.25458C16.1206 6.1093 16.1989
+                              5.91956
+                              16.1979 5.72303C16.1969 5.5265 16.1167 5.33757
+                              15.9732
+                              5.19375Z" fill="currentColor"></path>
+                          </svg>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="hero__slider--layer style3">
+                  <img class="slider__layer--img" src="assets/img/slider/home3-slider1-layer.webp" alt="slider-img">
+                </div>
+              </div>
+            </div>
+          </ng-template>
+        </ng-container>
+      </owl-carousel-o>
+      <div>
+      </div>
+
+      <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+    </div>
+  </section>
+  <!-- End slider section -->
+  <section class="banner__section section--padding pt-0">
+    <div class="container-fluid p-0">
+      <div class="row no-gutter mb--n30">
+        <div class="col-lg-6 col-md-6 col-sm-6 mb-30">
+          <div class="banner__box border-radius-5 position-relative">
+            <a class="display-block" routerLink="/products/collections/women">
+              <img class="banner__box--thumbnail border-radius-5" src="assets/img/banner/banner15.webp"
+                alt="banner-img">
+              <div class="fullwidth__banner--box__content left">
+                <p class="fullwidth__banner--box__subtitle">Store by Gre8</p>
+                <h2 class="fullwidth__banner--box__title">Women collection
+                  <br>
+                  Online
+                </h2>
+                <span class="banner__box--content__btn primary__btn">SHOP NOW
+                </span>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6 mb-30">
+          <div class="banner__box border-radius-5 position-relative">
+            <a class="display-block" routerLink="/products/collections/rings">
+              <img class="banner__box--thumbnail border-radius-5" src="assets/img/banner/banner16.webp"
+                alt="banner-img">
+              <div class="fullwidth__banner--box__content right">
+                <p class="fullwidth__banner--box__subtitle">Store by Gre8</p>
+                <h2 class="fullwidth__banner--box__title
+                  ">Rings
+                  <br>
+                  Collections
+                </h2>
+                <span class="banner__box--content__btn primary__btn">SHOP NOW
+                </span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Start product section -->
+  <section class="product__section section--padding">
+    <div class="container">
+      <div class="section__heading text-center mb-40">
+        <h2 class="section__heading--maintitle">NEW ARRIVALS</h2>
+        <h5 class="section__heading--maintitle">DISCOVER THE NEW COLLECTION</h5>
+      </div>
+      <div class="product__section--inner">
+        <div class="row mb--n30">
+          <div class="col-lg-3 col-md-4 col-sm-6 col-6 custom-col mb-30" *ngFor="let product of products">
+            <app-product [product]="product"></app-product>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End product section -->
+
+   <!-- about -->
+   <app-about></app-about>
+  <!-- about -->
+
+
+  <!-- End grid banner section -->
+  <!-- End banner section -->
+  <!-- Start small product section -->
+  <app-featured-products></app-featured-products>
+  <!-- End small product section -->
+  <!-- Start banner advice section -->
+  <section class="advice__banner--section section--padding pt-0">
+    <div class="advice__banner--box position-relative">
+      <img class="advice__banner--thumbnail height_260 border-radius-5" src="assets/img/banner/banner-fullwidth5.webp" alt="banner">
+      <div class="advice__banner--content style2">
+        <h2 class="advice__banner--title">Flat 50% Off On Fresh Jewelry</h2>
+        <p class="advice__banner--desc mb-30">50% OFF on the most popular cosmetic brands. Order all classy products today!
+        </p>
+        <a class="primary__btn" routerLink="/products/collections/jewellery">SHOP NOW</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="feature__section section--padding shipping">
+    <div class="container">
+      <div class="feature__inner d-flex justify-content-between">
+        <div class="feature__items d-flex align-items-center">
+          <div class="feature__icon">
+            <img src="assets/img/other/feature1.webp" alt="img">
+          </div>
+          <div class="feature__content">
+            <h2 class="feature__content--title h3">Free Shipping</h2>
+            <p class="feature__content--desc">Free shipping above ₹600</p>
+          </div>
+        </div>
+        <div class="feature__items d-flex align-items-center">
+          <div class="feature__icon ">
+            <img src="assets/img/other/feature2.webp" alt="img">
+          </div>
+          <div class="feature__content">
+            <h2 class="feature__content--title h3">Support 24/7</h2>
+            <p class="feature__content--desc">Contact us 24 hours a day</p>
+          </div>
+        </div>
+        <div class="feature__items d-flex align-items-center">
+          <div class="feature__icon">
+            <img src="assets/img/other/feature3.webp" alt="img">
+          </div>
+          <div class="feature__content">
+            <h2 class="feature__content--title h3">100% Money Back</h2>
+            <p class="feature__content--desc">You have 30 days to Return</p>
+          </div>
+        </div>
+        <div class="feature__items d-flex align-items-center">
+          <div class="feature__icon">
+            <img src="assets/img/other/feature4.webp" alt="img">
+          </div>
+          <div class="feature__content">
+            <h2 class="feature__content--title h3">Payment Secure</h2>
+            <p class="feature__content--desc">We ensure secure payment</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

@@ -1,0 +1,16 @@
+<div class="row multi-steps-wrap">
+  <ul class="list-unstyled multi-steps">
+    <li class="job-status job-created"
+      [ngClass]="{'job-inprogress is-active negative': status.toLowerCase() == 'processing' || status.toLowerCase() == 'packed' || status.toLowerCase() == 'shipped'|| status.toLowerCase() == 'delivered'}">
+      Processing</li>
+    <li class="job-status"
+      [ngClass]="{'job-inprogress is-active negative': status.toLowerCase() == 'packed' || status.toLowerCase() == 'shipped'|| status.toLowerCase() == 'delivered'}">
+      Packed</li>
+    <li class="job-status job-completed "
+      [ngClass]="{'job-inprogress is-active negative': status.toLowerCase() == 'shipped' || status.toLowerCase() == 'delivered'}">
+      Shipped</li>
+    <li class="job-status job-closed"
+      [ngClass]="{'job-inprogress is-active negative': status.toLowerCase() == 'delivered'}">
+      Delivered</li>
+  </ul>
+</div>

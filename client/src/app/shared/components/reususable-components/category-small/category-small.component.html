@@ -1,0 +1,12 @@
+<div class="category-small">
+  <span style="box-sizing:border-box;display:block;overflow:hidden;width:initial;height:initial;background:none;opacity:1;border:0;margin:0;padding:0;position:relative">
+    <span
+      style="box-sizing:border-box;display:block;width:initial;height:initial;background:none;opacity:1;border:0;margin:0;padding:0;padding-top:100%">
+    </span>
+    <img [routerLink]="'/products/collections/' + category.name.toLowerCase()" alt="Summer Sale" title="Summer Sale" sizes="100vw"
+    [src]="category.imgSrc"
+      decoding="async" data-nimg="responsive"
+      style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%; object-fit: unset; border-radius: 12px">
+  </span>
+  <div class="category-name">{{ category.categorySmallName?.toUpperCase() }}</div>
+</div>

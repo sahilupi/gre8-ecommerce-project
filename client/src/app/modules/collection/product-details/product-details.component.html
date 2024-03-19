@@ -1,0 +1,216 @@
+<!-- Start breadcrumb section -->
+<div class="breadcrumb__section breadcrumb__bg">
+  <div class="container">
+    <div class="row row-cols-1">
+      <div class="col">
+        <div class="breadcrumb__content text-center">
+          <ul class="breadcrumb__content--menu d-flex justify-content-center">
+            <li class="breadcrumb__content--menu__items"><a routerLink="/">Home</a></li>
+            <li class="breadcrumb__content--menu__items"><span *ngIf="product">{{ product.name }}</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End breadcrumb section -->
+
+<!-- Start product details section -->
+<section class="product__details--section section--padding">
+  <div class="container">
+    <h2 *ngIf="!isLoading && !product">No Product found</h2>
+    <div class="row" *ngIf="isLoading">
+      <div class="col-md-6" style="margin: auto;">
+        <div style="margin: auto;">
+          <ngx-skeleton-loader count="1" appearance="circle" [theme]="{
+          width: '100%',
+          height: '320px',
+          'border-radius': 0
+        }">
+          </ngx-skeleton-loader>
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-6">
+        <div style="margin: auto;">
+          <ngx-skeleton-loader count="1" appearance="circle" [theme]="{
+          width: '100%',
+          height: '320px',
+          'border-radius': 0
+        }">
+          </ngx-skeleton-loader>
+        </div>
+      </div>
+    </div>
+    <div class="row" *ngIf="product">
+      <div class="col-md-6" style="margin: auto;">
+        <gallery id="basic-test" imageSize="contain" fluid [items]="items"></gallery>
+      </div>
+      <div class="col-lg-6 col-md-6">
+        <div class="product__details--info">
+          <form>
+            <h2 class="product__details--info__title mb-15">{{ product.name }} </h2>
+            <div class="product__details--info__price mb-12">
+              <span class="current__price">{{ product.currentPrice| currency: product.currency }}</span>
+              <span class="old__price">{{ product.mrpPrice| currency: product.currency }}</span>
+              <span class="discount_badge"
+                *ngIf="+product.mrpPrice > +product.currentPrice && +(100 - (+product.currentPrice* 100)/+product.mrpPrice).toFixed(0) > 0">
+                {{(100 - (+product.currentPrice* 100)/+product.mrpPrice).toFixed(0) }}% off</span>
+              <span>( inclusive of all taxes )</span>
+            </div>
+            <p class="product__details--info__desc mb-15">{{ product.description }}</p>
+            <div class="product__variant">
+              <div class="product__variant--list mb-15">
+                <fieldset class="variant__input--fieldset" *ngIf="product.colors && product.colors.length > 0">
+                  <legend class="product__variant--title mb-8">Color :</legend>
+                  <div class="variant__color d-flex">
+                    <div class="variant__color--list">
+                      <!-- <a class="color" *ngFor="let color of product.colors" [style]="'background-color:' + color.code"
+                        (click)="onChangeColor(color.name)">
+                      </a> -->
+                      <label *ngFor="let color of product.colors" class="variant__color--value red" for="color-red5"
+                        title="Red">
+                        <a class="variant__color--value__img" [style]="'background-color:' + color.code"></a>
+                      </label>
+                    </div>
+                  </div>
+                </fieldset>
+              </div>
+              <div class="product__variant--list mb-20" *ngIf="product.sizes && product.sizes.length > 0">
+                <fieldset class="variant__input--fieldset">
+                  <legend class="product__variant--title mb-8" style="text-transform: capitalize;">Selected Size : <b>
+                      {{ selectedSize }}</b></legend>
+                  <ul class="variant__size d-flex">
+                    <li class="variant__size--list" *ngFor="let size of product.sizes">
+                      <input id="size" name="size" type="hidden">
+                      <label style="border: 1px solid var(--border-color);" class="variant__size--value red" for="size"
+                        (click)="onSelectSize(size)">{{ size.slice(0,1).toUpperCase() }}</label>
+                    </li>
+                  </ul>
+                  <h4 style="color: red" *ngIf="!selectedSize && isSubmitted">Please select a size</h4>
+                </fieldset>
+              </div>
+              <div class="product__variant--list quantity d-flex align-items-center mb-20">
+                <div class="quantity__box">
+                  <label>
+                    <app-input-spinner [value]="quantity" (change)="onUpdateQuantity($event)"></app-input-spinner>
+                  </label>
+                </div>
+                <button class="primary__btn quickview__cart--btn" type="button" (click)="onAddtoCart(product._id)">Add
+                  To Cart</button>
+
+              </div>
+              <div class="product__variant--list mb-20">
+
+                <a (click)="onAddtoWishlist(product._id)" class="variant__wishlist--icon mb-15" title="Add to wishlist">
+                  <svg class="quickview__variant--wishlist__svg" xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 512 512">
+                    <path
+                      d="M352.92 80C288 80 256 144 256 144s-32-64-96.92-64c-52.76 0-94.54 44.14-95.08 96.81-1.1 109.33 86.73 187.08 183 252.42a16 16 0 0018 0c96.26-65.34 184.09-143.09 183-252.42-.54-52.67-42.32-96.81-95.08-96.81z"
+                      fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                      stroke-width="32" />
+                  </svg>
+                  Add to Wishlist
+                </a>
+                <div class="share-buttons">
+                  <p>Share Product</p>
+                  <share-buttons theme="circles-dark"
+                    [include]="['copy', 'facebook', 'email', 'sms', 'telegram', 'twitter', 'whatsapp']"
+                    [showIcon]="true" [showText]="true" [url]="currentUrl" description="Gre8 Products" >
+                  </share-buttons>
+                </div>
+              </div>
+            </div>
+
+            <!-- <div class="product__details--accordion">
+              <div class="product__details--accordion__list">
+                <details>
+                  <summary class="product__details--summary">
+                    <h2 class="product__details--summary__title">Description
+                      <svg width="11" height="6" xmlns="http://www.w3.org/2000/svg"
+                        class="order-summary-toggle__dropdown" fill="currentColor">
+                        <path
+                          d="M.504 1.813l4.358 3.845.496.438.496-.438 4.642-4.096L9.504.438 4.862 4.534h.992L1.496.69.504 1.812z">
+                        </path>
+                      </svg>
+                    </h2>
+                  </summary>
+                  <div class="product__details--summary__wrapper">
+                    <div class="product__tab--content">
+                      <div class="product__tab--content__step mb-30">
+                        <h2 class="product__tab--content__title h4 mb-10">Nam provident sequi</h2>
+                        <p class="product__tab--content__desc">Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                          Nam provident sequi, nemo sapiente culpa nostrum rem eum perferendis quibusdam, magnam a vitae
+                          corporis! Magnam enim modi, illo harum suscipit.</p>
+                      </div>
+                      <div class="image__with--text__percent product__tab--percent__style mb-25">
+                        <ul>
+                          <li class="image__with--text__percent--list mb-20">
+                            <span
+                              class="image__with--text__percent--top d-flex justify-content-between align-content-center">
+                              <span class="image__with--text__percent--content">Integrative control</span>
+                              <span class="image__with--text__percent--content">58%</span>
+                            </span>
+                          </li>
+                          <li class="image__with--text__percent--list two mb-20">
+                            <span
+                              class="image__with--text__percent--top d-flex justify-content-between align-content-center">
+                              <span class="image__with--text__percent--content">Design Device</span>
+                              <span class="image__with--text__percent--content">77%</span>
+                            </span>
+                          </li>
+                          <li class="image__with--text__percent--list three mb-20">
+                            <span
+                              class="image__with--text__percent--top d-flex justify-content-between align-content-center">
+                              <span class="image__with--text__percent--content">Service Control</span>
+                              <span class="image__with--text__percent--content">58%</span>
+                            </span>
+                          </li>
+                          <li class="image__with--text__percent--list four">
+                            <span
+                              class="image__with--text__percent--top d-flex justify-content-between align-content-center">
+                              <span class="image__with--text__percent--content">Metar Surusn</span>
+                              <span class="image__with--text__percent--content">69%</span>
+                            </span>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="product__tab--content__step">
+                        <p class="product__tab--content__desc">Polor sit amet, consectetuer adipiscing elit. Morbi
+                          commodo, ipsum sed pharetra gravida, orci magna rhoncus neque, id pulvinar odio
+                          lorem non turpis. Nullam sit amet enim. Suspendisse id velit vitae ligula volutpat
+                          condimentum. Aliquam erat volutpat. Sed quis velit.
+                          Nulla facilisi. Nulla libero. Vivamus pharetra posuere.</p>
+                      </div>
+                    </div>
+                  </div>
+                </details>
+              </div>
+            </div> -->
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End product details section -->
+
+<!-- Start product section -->
+<section class="product__section section--padding pt-0">
+  <div class="container" *ngIf="products && products.length > 0">
+    <div class="section__heading text-center mb-40">
+      <h2 class="section__heading--maintitle">You May Also Like</h2>
+    </div>
+    <owl-carousel-o [options]="customOptionsRelated" class="owl-theme row owl-nav-full ">
+      <ng-container>
+        <ng-template carouselSlide *ngFor="let product of products" class="col-lg-3 col-md-4 col-6 mb-4">
+          <app-product [product]="product"></app-product>
+        </ng-template>
+      </ng-container>
+    </owl-carousel-o>
+  </div>
+</section>
+
+<app-loading-spinner *ngIf="isLoadingCart"></app-loading-spinner>
+
+<app-snackbar *ngIf="product" [bagType]="bagType" [route]="route" [name]="product.name"
+  [isShown]="isSnackbarShown"></app-snackbar>

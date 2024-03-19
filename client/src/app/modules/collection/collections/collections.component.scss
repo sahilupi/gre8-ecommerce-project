@@ -1,0 +1,21 @@
+.product-collection {
+  max-width: 100%
+}
+
+.img-product {
+  max-height: 440px;
+  }
+  .product__card {
+    max-height: 100%;
+  }
+@media(max-width: 600px) {
+  .img-product {
+    min-height: 200px;
+  }
+  .img-product {
+    max-height: 280px;
+  }
+  .product-collection {
+    max-width: 50%
+  }
+}

@@ -1,0 +1,36 @@
+<div class="breadcrumb__section breadcrumb__bg">
+  <div class="container">
+      <div class="row row-cols-1">
+          <div class="col">
+              <div class="breadcrumb__content text-center">
+                  <ul class="breadcrumb__content--menu d-flex justify-content-center">
+                      <li class="breadcrumb__content--menu__items"><a routerLink="/">Home</a></li>
+                      <li class="breadcrumb__content--menu__items"><span>My Account</span></li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+<section class="my__account--section section--padding">
+  <div class="container">
+      <p class="account__welcome--text" *ngIf="userName">Hello, <b>{{ userName }}</b> welcome to your dashboard!</p>
+      <div class="my__account--section__inner border-radius-10 d-flex">
+          <div class="account__left--sidebar">
+              <h2 class="account__content--title mb-20">My Profile</h2>
+              <ul class="account__menu">
+                  <li class="account__menu--list" routerLinkActive="active" routerLink="dashboard"><a routerLink="dashboard">Dashboard</a></li>
+                  <li class="account__menu--list" routerLinkActive="active" routerLink="orders"><a routerLink="orders">Orders</a></li>
+                  <li class="account__menu--list" routerLinkActive="active" routerLink="/cart"><a routerLink="/cart">Cart</a></li>
+                  <li class="account__menu--list" routerLinkActive="active" (click)="onLogout()"><a>Log Out</a></li>
+              </ul>
+          </div>
+          <div class="account__wrapper">
+              <div class="account__content">
+                  <router-outlet></router-outlet>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>

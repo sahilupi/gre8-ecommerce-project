@@ -1,0 +1,8 @@
+<div *ngIf="isShown" class="animate__animated animate__bounceIn snackbar" style="display: block;">
+  <a [routerLink]="'/'+route" class="btn btn-md">View {{ bagType }}</a>
+  <!-- <span>"{{ name }}" has been added to your cart.</span> -->
+  <span>This product is in your {{ bagType }}.</span>
+  <button type="button" class="btn btn-link btn-close" (click)="isShown = false">
+    <i class="d-icon-times"></i>
+  </button>
+</div>
